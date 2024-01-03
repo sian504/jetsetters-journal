@@ -1,56 +1,149 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# The Jetsetter Journal
 
-Welcome,
+The Jetsetter Journal is a website for frequent travellers to share their recommendations for specific destinations or to pick up suggestions for upcoming holidays. The [live website is here](https://your-website-url).
 
-This is the Code Institute student template for the mongo lessons. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Table of Contents
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **April 3rd, 2023**
+### User Experience (UX)
+- Strategy
+- Scope
+- Structure
+- Skeleton
+- Surface
 
-## Codeanywhere Reminders
+### Features
+### Technologies
+### Testing
+- Test Results and Bugs
+### Deployment
+### Credits
 
-# IDE
+## Strategy
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose option 4.4 for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password *(will not echo **\*\*\*\*** *on screen)\*
+### Site goals
+- To give travellers the opportunity to share their travel experiences and recommendations for specific destinations.
+- To provide information to travellers planning an upcoming holiday and looking to put together an itinerary.
 
-#### Clear screen in Mongo Shell:
+### User Stories
 
-- `cls`
+#### As a first-time user:
+- I want to understand the purpose of the website as soon as I land on it.
+- I want the site to be fully responsive and viewable on any device.
+- I want to contact the site administrators to make suggestions or ask for support.
+- I want to easily return to the homepage if any errors occur.
 
-#### Show all database collections:
+#### As a user without an account:
+- I want to find what I need easily with intuitive navigation.
+- I want to view information about the destination I plan to travel to.
+- I want the opportunity to create an account.
 
-- `show collections`
+#### As a user with an account:
+- I want to sign in to my account.
+- I want to log out successfully.
+- I want to search and filter destination information.
+- I want to add my own recommendations.
+- I want to view, edit, and delete my recommendations.
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+#### As a superuser:
+- I want to add, edit, or delete travel destinations for users to view and add suggestions.
+- I want to edit or delete recommendations created by other users for site maintenance.
 
-`python3 -m http.server`
+## Scope
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+The table below shows all planned features of the site, detailing the user type, difficulty, and importance ratings. Prioritization will be based on these ratings during the build phase.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+| User               | Feature                                                       | Difficulty | Importance |
+|--------------------|---------------------------------------------------------------|------------|------------|
+| All users          | Responsive Design                                              |            |            |
+| All users          | MongoDB database creation to store data                        |            |            |
+| All users          | Navigation                                                    |            |            |
+| All users          | Home page - branding and about section                         |            |            |
+| All users          | Home page - travel destination on map (powered by Google Maps API) with clickable markers |            |            |
+| Users with an account | Travel destination information page with full info with search and filter functionality |            |            |
+| All users          | Log-in functionality                                          |            |            |
+| All users          | Registration functionality                                     |            |            |
+| All users          | Error pages providing home page links                          |            |            |
+| Users with an account | Logout functionality                                        |            |            |
+| Users with an account | Profile page with user’s recommendations                      |            |            |
+| Users with an account | Add recommendation functionality                              |            |            |
+| Users with an account | Edit/ delete functionality for user’s own recommendations     |            |            |
+| Superuser           | Manage locations page (with edit/delete links)                 |            |            |
+| Superuser           | Add location form                                             |            |            |
+| Superuser           | Edit location form                                            |            |            |
+| Superuser           | Delete location functionality                                 |            |            |
+| Superuser           | Edit/ delete other user’s recommendations                    |            |            |
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+[Insert user flow diagram here.]
 
-To log into the Heroku toolbelt CLI:
+The site will consist of 10 pages, including:
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Home page
+- Site branding, about section
+- Navigation bar
+- Location map (powered by Google Maps API)
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+### Registration page
+- User sign-up form
 
----
+### Login page
+- User login form
 
-Happy coding!
+### Profile page
+- Summary of user recommendations
+
+### Location/recommendations page
+- All destinations and recommendations
+
+### Add recommendations page
+- Form to add recommendations
+
+### Edit recommendations page
+- Edit user's recommendations
+
+### Add locations page
+- Form for superusers to add locations
+
+### Edit locations page
+- Edit locations added by superusers
+
+### Logout page
+- Logout confirmation page
+
+## Database Structure
+
+[Link to database structure diagram.]
+[Screenshots of example database records.]
+
+The database structure includes collections:
+- Users
+- Recommendations
+
+Posts have titles, content, author (username), date, and category name.
+
+Recommendation Categories:
+- Things to do
+- Where to eat
+- Where to stay
+
+An index in MongoDB is used to query posts by location and category name.
+
+## Skeleton
+
+[Wireframes for Desktop, Tablet, and Mobile.]
+
+## Surface
+
+### Images
+- Background hero image
+
+### Colors
+- Darker and lighter shades of green
+
+### Fonts
+- Lobster (hero image text overlay, brand text)
+- Roboto (main font across the site)
+
+Text consistency across pages:
+- Centered title and small summary
+- Remaining content aligned to the left
