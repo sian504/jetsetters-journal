@@ -14,13 +14,15 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
-mongo = PyMongo(app) 
+mongo = PyMongo(app)
 
-@app.route("/")
-@app.route("/get_tasks")
-def get_recommendations(): 
-    tasks = mongo.db.recommendations.find()
-    return render_template("recommendations.html", recommendations=recommendations)
+# @app.route("/")
+
+
+@app.route("/get_locations")
+def get_locations():
+    tasks = mongo.db.locations.find()
+    return render_template("locations.html", locations=locations)
 
 
 if __name__ == "__main__":
