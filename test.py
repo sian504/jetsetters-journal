@@ -4,7 +4,7 @@ if os.path.exists("env.py"):
     import env
 
 
-MONGO_URI = os.environ.get("MONGO_URI")             
+MONGO_URI = os.environ.get("MONGO_URI")          
 
 
 def mongo_connect(url):
@@ -33,5 +33,5 @@ def download_collection(client, database_name, collection_name):
 collection_name = "locations"
 database_name = "TheJetsettersJournal"
 documents = download_collection(client, database_name, collection_name)
-# for document in documents:
-print(documents)
+for document in documents:
+    print(document.get('"name"', 'Name not found'))
