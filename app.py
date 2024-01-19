@@ -27,7 +27,6 @@ def home_page():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    print("Reached the register route")
     if request.method == "POST":
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
@@ -48,6 +47,13 @@ def register():
             flash("Registration Successful!", "success")
 
     return render_template("register.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    return render_template("login.html")
+
+
 
     
 @app.route("/get_locations")
