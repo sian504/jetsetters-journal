@@ -11,3 +11,9 @@
 .flashes h4 {
     line-height: 2;
 }
+
+/* Profile page map */ 
+
+#map { 
+    height: 450px; 
+}
