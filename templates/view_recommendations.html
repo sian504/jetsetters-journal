@@ -10,28 +10,20 @@
 
             <!-- Display recommendations -->
            <h2>Recommendations</h2>
-           <ul>
-               {% for recommendation in recommendations %}
-                   <li>
-                       <p>User: {{ recommendation.user }}</p>
-                       <p>Category: {{ recommendation.category }}</p>
-                       <p>Comment: {{ recommendation.comment }}</p>
-                   </li>
-               {% endfor %}
-
+          
             <ul class="collapsible">
+                {% for recommendation in recommendations %}
                 <li>
-                    <div class="collapsible-header white-text teal lighten-1 text-shadow"><i class="fas fa-caret-down"></i>First</div>
-                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    <div class="collapsible-header white-text teal lighten-1 text-shadow">
+                        <i class="fas fa-caret-down"></i>
+                        <strong>{{ recommendation.category }}</strong>
+                    </div>
+                    <div class="collapsible-body">
+                        <strong>{{ recommendation.user }}</strong>
+                        <p>{{ recommendation.comment }}</p>
+                    </div>
                 </li>
-                <li>
-                    <div class="collapsible-header white-text teal lighten-1 text-shadow"><i class="fas fa-caret-down"></i>Second</div>
-                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                </li>
-                <li>
-                    <div class="collapsible-header white-text teal lighten-1 text-shadow"><i class="fas fa-caret-down"></i>Third</div>
-                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                </li>
+                {% endfor %}
             </ul>
 
             <a href="{{ url_for('profile', username=session['user']) }}">Back to Profile</a>
