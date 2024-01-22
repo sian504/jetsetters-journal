@@ -7,6 +7,19 @@
             <p>Country: {{ city_data.country }}</p>
             <p>Description: {{ city_data.description }}</p>
             <img src="#" alt="#" width="300">
+
+            <!-- Display recommendations -->
+           <h2>Recommendations</h2>
+           <ul>
+               {% for recommendation in recommendations %}
+                   <li>
+                       <p>User: {{ recommendation.user }}</p>
+                       <p>Category: {{ recommendation.category }}</p>
+                       <p>Comment: {{ recommendation.comment }}</p>
+                   </li>
+               {% endfor %}
+
+            <a href="{{ url_for('profile', username=session['user']) }}">Back to Profile</a>
         </div>
     </div>
 

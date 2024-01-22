@@ -104,8 +104,11 @@ def city_page(city_name):
     city_data = mongo.db.locations.find_one({'name': city_name})
 
     if city_data:
-        # Render the same template for all cities
-        return render_template('view_recommendations.html', city_data=city_data)
+        # Query the recommendations collection for recommendations associated with the city_id
+        recommendations = mongo.db.recommendations.find({"city_id": city_data['_id']})
+
+        # Render the template with city data and recommendations
+        return render_template('view_recommendations.html', city_data=city_data, recommendations=recommendations)
     else:
         # Handle case where city_name is not found in the database
         return render_template('not_found.html', city_name=city_name)
