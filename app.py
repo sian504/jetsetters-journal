@@ -98,13 +98,19 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route('/city/<city_name>')
+def city_page(city_name):
+    # Query MongoDB based on the city_name parameter
+    city_data = mongo.db.locations.find_one({'name': city_name})
 
-@app.route("/get_locations")
-def get_locations():
-    locations = mongo.db.locations.find()
-    return render_template("locations.html", locations=locations)
+    if city_data:
+        # Render the same template for all cities
+        return render_template('view_recommendations.html', city_data=city_data)
+    else:
+        # Handle case where city_name is not found in the database
+        return render_template('not_found.html', city_name=city_name)
 
-
+        
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
