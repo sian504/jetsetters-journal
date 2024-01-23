@@ -113,7 +113,12 @@ def city_page(city_name):
         # Handle case where city_name is not found in the database
         return render_template('not_found.html', city_name=city_name)
 
-        
+
+@app.route("/add_recommendations")
+def add_recommendations():
+    return render_template("add_recommendations.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
