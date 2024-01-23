@@ -4,8 +4,10 @@
 
 $(document).ready(function () {
     $(".sidenav").sidenav({edge: "right"});
-    $('.collapsible').collapsible();    
+    $('.collapsible').collapsible();
+    $('select').formSelect();    
 });
+
 
 /*
     jQuery for Leaflet.JS map 
