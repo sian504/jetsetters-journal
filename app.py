@@ -114,13 +114,53 @@ def city_page(city_name):
         return render_template('not_found.html', city_name=city_name)
 
 
-@app.route("/add_recommendations")
+@app.route("/add_recommendations", methods=["GET", "POST"])
 def add_recommendations():
-    locations = mongo.db.locations.find({}, {"name": 1, "_id": 0})
-    city_names = [location["name"] for location in locations]
-    categories = mongo.db.recommendations.distinct("category")
+    if request.method == "POST":
+        # Retrieve the recommendation data from the form
+        category = request.form.get("category")
+        user = request.form.get("user")
+        comment = request.form.get("comment")
+        city_name = request.form.get("city")
 
-    return render_template("add_recommendations.html", cities=city_names, categories=categories)
+        # Find the city based on the provided city name
+        city_data = mongo.db.locations.find_one({'name': city_name})
+
+        # Ensure that the city is found in the locations collection
+        if city_data:
+            # City id is now defined with what is retrieved from Mongodb
+            city_id = city_data['_id']
+
+            locations = mongo.db.locations.find({}, {"name": 1, "_id": 0})
+            city_names = [location["name"] for location in locations]
+            categories = mongo.db.recommendations.distinct("category")
+
+            # Insert the recommendation into the recommendations collection
+            recommendation = {
+                "city_id": city_id,
+                "category": category,
+                "user": user,
+                "comment": comment
+            }
+
+            mongo.db.recommendations.insert_one(recommendation)
+
+            flash("Recommendation successfully added!", "success")
+
+            return render_template("add_recommendations.html", cities=city_names, categories=categories, city_id=city_id)
+        else:
+            # Handle the case where the provided city name is not found
+            flash("City not found", "error")
+            return redirect(url_for("add_recommendations"))
+
+    else:
+        # Handle the GET request, provide initial data for the form
+        locations = mongo.db.locations.find({}, {"name": 1, "_id": 0})
+        city_names = [location["name"] for location in locations]
+        categories = mongo.db.recommendations.distinct("category")
+
+        return render_template("add_recommendations.html", cities=city_names, categories=categories)
+
 
 
 if __name__ == "__main__":

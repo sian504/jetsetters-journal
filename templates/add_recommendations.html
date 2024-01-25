@@ -4,7 +4,7 @@
 <h3>Add Recommendation</h3>
 
     <div class="row card-panel grey lighten-5">
-        <form class="col s12" method="POST" action="">
+        <form class="col s12" method="POST" action="{{ url_for('add_recommendations') }}">
 
             <!-- User Name (Prefilled with the currently logged-in user) -->
             <div class="row">
@@ -43,7 +43,7 @@
                 </div>
             </div>
 
-            <!-- Comment -->
+            <!-- Recomnendation Comment -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-comment"></i>
