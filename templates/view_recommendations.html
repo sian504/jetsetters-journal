@@ -32,6 +32,7 @@
                 {% endfor %}
             </ul>
 
+            <a href="{{ url_for('add_recommendations') }}">New Recommendation</a> <br>          
             <a href="{{ url_for('profile', username=session['user']) }}">Back to Profile</a>
         </div>
     </div>
