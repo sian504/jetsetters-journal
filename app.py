@@ -116,8 +116,11 @@ def city_page(city_name):
 
 @app.route("/add_recommendations")
 def add_recommendations():
+    locations = mongo.db.locations.find({}, {"name": 1, "_id": 0})
+    city_names = [location["name"] for location in locations]
     categories = mongo.db.recommendations.distinct("category")
-    return render_template("add_recommendations.html", categories=categories)
+
+    return render_template("add_recommendations.html", cities=city_names, categories=categories)
 
 
 if __name__ == "__main__":
