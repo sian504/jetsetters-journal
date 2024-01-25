@@ -105,10 +105,18 @@ def city_page(city_name):
 
     if city_data:
         # Query the recommendations collection for recommendations associated with the city_id
-        recommendations = mongo.db.recommendations.find({"city_id": city_data['_id']})
+        recommendations = list(mongo.db.recommendations.find({"city_id": city_data['_id']}))
 
-        # Render the template with city data and recommendations
-        return render_template('view_recommendations.html', city_data=city_data, recommendations=recommendations)
+        # Group recommendations by category
+        grouped_recommendations = {}
+        for recommendation in recommendations:
+            category = recommendation.get('category')
+            if category not in grouped_recommendations:
+                grouped_recommendations[category] = []
+            grouped_recommendations[category].append(recommendation)
+
+        # Render the template with city data and grouped recommendations
+        return render_template('view_recommendations.html', city_data=city_data, grouped_recommendations=grouped_recommendations)
     else:
         # Handle case where city_name is not found in the database
         return render_template('not_found.html', city_name=city_name)
