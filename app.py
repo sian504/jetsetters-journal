@@ -170,6 +170,12 @@ def add_recommendations():
         return render_template("add_recommendations.html", cities=city_names, categories=categories)
 
 
+@app.route('/edit_recommendation/<id>', methods=['GET'])
+def edit_recommendation(id):
+    recommendation = mongo.db.recommendations.find_one({"_id": ObjectId(id)})
+    
+    return render_template('edit_recommendation.html', recommendation=recommendation)
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

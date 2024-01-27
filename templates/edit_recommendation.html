@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <h3>Edit Recommendation</h3>
+
+    <div class="row card-panel grey lighten-5">
+        <p>User: {{ recommendation.user }}</p>
+        <p>Category: {{ recommendation.category }}</p>
+        <p>Comment: {{ recommendation.comment }}</p>
+    </div>
+{% endblock %}
