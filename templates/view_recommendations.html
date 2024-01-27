@@ -24,6 +24,9 @@
                                     <li>
                                         <p><strong>{{ recommendation.user }}</strong></p>
                                         <p>{{ recommendation.comment }}</p>
+                                        {% if recommendation.user == session['user'] %}
+                                            <a href="#" class="waves-effect waves-light btn-small">Edit</a>
+                                        {% endif %}
                                     </li>
                                 {% endfor %}
                             </ul>
