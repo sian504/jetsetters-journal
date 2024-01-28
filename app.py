@@ -183,8 +183,6 @@ def edit_recommendation(id):
 
     # Get the city_name from the location document
     city_name_default = default_location.get("name", "")
-
-    # distinct_categories = mongo.db.recommendations.distinct("category")
     
     # Get the city_name from the location document
     city_name_default = default_location.get("name", "")
@@ -203,6 +201,16 @@ def edit_recommendation(id):
         flash("Task Successfully Updated")
 
     return render_template('edit_recommendation.html', recommendation=recommendation, city_name_default=city_name_default)
+
+
+@app.route("/delete_recommendation/<id>")
+def delete_recommendation(id):
+    recommendation = mongo.db.recommendations.find_one({"_id": ObjectId(id)})
+
+    username = recommendation.get("user")
+    mongo.db.recommendations.delete_one({"_id": ObjectId(id)})
+    flash("Task Successfully Deleted")
+    return redirect(url_for("profile", username=username))
 
 
 if __name__ == "__main__":
