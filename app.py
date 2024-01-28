@@ -181,7 +181,10 @@ def edit_recommendation(id):
     default_location = mongo.db.locations.find_one({"_id": ObjectId(city_id)})
     locations = mongo.db.locations.distinct("name")
 
-    distinct_categories = mongo.db.recommendations.distinct("category")
+    # Get the city_name from the location document
+    city_name_default = default_location.get("name", "")
+
+    # distinct_categories = mongo.db.recommendations.distinct("category")
     
     # Get the city_name from the location document
     city_name_default = default_location.get("name", "")
@@ -189,21 +192,17 @@ def edit_recommendation(id):
     if request.method == "POST":
         print("POST request detected")
         # Retrieve the recommendation data from the form
-        category = request.form.get("category")
-        # user = request.form.get("user")
         comment = request.form.get("comment")
-        # city_name = request.form.get("city")
 
         update_query = {
         "$set": {
-            "category": category,
             "comment": comment
         }
     }
         mongo.db.recommendations.update_one({"_id": ObjectId(id)}, update_query)
         flash("Task Successfully Updated")
 
-    return render_template('edit_recommendation.html', distinct_categories=distinct_categories, cities=locations, recommendation=recommendation, city_name_default=city_name_default)
+    return render_template('edit_recommendation.html', recommendation=recommendation, city_name_default=city_name_default)
 
 
 if __name__ == "__main__":

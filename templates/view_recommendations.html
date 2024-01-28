@@ -25,7 +25,7 @@
                                         <p><strong>{{ recommendation.user }}</strong></p>
                                         <p>{{ recommendation.comment }}</p>
                                         {% if recommendation.user == session['user'] %}
-                                        <a href="{{ url_for('edit_recommendation', id=recommendation._id) }}">Edit</a>
+                                        <a href="{{ url_for('edit_recommendation', id=recommendation._id) }}">Edit Recommendation</a>
 
                                         {% endif %}
                                     </li>

@@ -18,12 +18,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-city"></i>
-                    <select id="city" name="city" class="validate" required>
-                        <option value="" selected>{{ city_name_default }}</option>
-                        {% for city in cities %}
-                            <option value="{{ city }}">{{ city }}</option>
-                        {% endfor %}
-                    </select>
+                    <input id="city" name="city" type="text" required value="{{ city_name_default }}" readonly>
                     <label for="city">City Name</label>
                 </div>
             </div>
@@ -32,12 +27,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-list-alt"></i>
-                    <select id="category" name="category" class="validate" required>
-                        <option value="" selected>{{ recommendation.category }}</option>
-                        {% for distinct_category in distinct_categories %}
-                            <option value="{{ category }}">{{ distinct_category }}</option>
-                         {% endfor %}
-                    </select>
+                    <input id="category" name="category" type="text" required value="{{ recommendation.category }}" readonly>
                     <label for="category">Recommendation Category</label>
                 </div>
             </div>
@@ -47,8 +37,7 @@
                 <div class="input-field col s12">
                     <i class="fas fa-comment"></i>
                     <textarea id="comment" name="comment" minlength="5"
-                        maxlength="200" class="materialize-textarea validate" required>
-                        {{ recommendation.comment }}
+                        maxlength="200" class="materialize-textarea validate" required>{{ recommendation.comment }}
                     </textarea>
                     <label for="comment">Your Recommendation</label>
                 </div>
