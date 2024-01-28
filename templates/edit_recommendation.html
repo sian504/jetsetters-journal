@@ -3,7 +3,7 @@
     <h3>Edit Recommendation</h3>
 
     <div class="row card-panel grey lighten-5">
-        <form class="col s12" action="">
+        <form class="col s12" method="POST" action="{{ url_for('edit_recommendation', id=recommendation._id) }}">
 
             <!-- User Name (Prefilled with the currently logged-in user) -->
             <div class="row">
@@ -19,7 +19,7 @@
                 <div class="input-field col s12">
                     <i class="fas fa-city"></i>
                     <select id="city" name="city" class="validate" required>
-                        <option value="" disabled selected>{{ city_name_default }}</option>
+                        <option value="" selected>{{ city_name_default }}</option>
                         {% for city in cities %}
                             <option value="{{ city }}">{{ city }}</option>
                         {% endfor %}
@@ -33,7 +33,7 @@
                 <div class="input-field col s12">
                     <i class="fas fa-list-alt"></i>
                     <select id="category" name="category" class="validate" required>
-                        <option value="" disabled selected>{{ recommendation.category }}</option>
+                        <option value="" selected>{{ recommendation.category }}</option>
                         {% for distinct_category in distinct_categories %}
                             <option value="{{ category }}">{{ distinct_category }}</option>
                          {% endfor %}

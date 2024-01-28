@@ -170,12 +170,12 @@ def add_recommendations():
         return render_template("add_recommendations.html", cities=city_names, categories=categories)
 
 
-@app.route('/edit_recommendation/<id>', methods=['GET'])
+@app.route('/edit_recommendation/<id>', methods=["GET", "POST"])
 def edit_recommendation(id):
+
     recommendation = mongo.db.recommendations.find_one({"_id": ObjectId(id)})
     # Fetch the city_id from the recommendation
     city_id = recommendation.get("city_id")
-    # category = recommendation.get("category")
 
     # Query the locations collection to retrieve the corresponding city_name
     default_location = mongo.db.locations.find_one({"_id": ObjectId(city_id)})
@@ -185,6 +185,24 @@ def edit_recommendation(id):
     
     # Get the city_name from the location document
     city_name_default = default_location.get("name", "")
+
+    if request.method == "POST":
+        print("POST request detected")
+        # Retrieve the recommendation data from the form
+        category = request.form.get("category")
+        # user = request.form.get("user")
+        comment = request.form.get("comment")
+        # city_name = request.form.get("city")
+
+        update_query = {
+        "$set": {
+            "category": category,
+            "comment": comment
+        }
+    }
+        mongo.db.recommendations.update_one({"_id": ObjectId(id)}, update_query)
+        flash("Task Successfully Updated")
+
     return render_template('edit_recommendation.html', distinct_categories=distinct_categories, cities=locations, recommendation=recommendation, city_name_default=city_name_default)
 
 
