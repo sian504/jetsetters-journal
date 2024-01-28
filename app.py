@@ -173,8 +173,19 @@ def add_recommendations():
 @app.route('/edit_recommendation/<id>', methods=['GET'])
 def edit_recommendation(id):
     recommendation = mongo.db.recommendations.find_one({"_id": ObjectId(id)})
+    # Fetch the city_id from the recommendation
+    city_id = recommendation.get("city_id")
+    # category = recommendation.get("category")
+
+    # Query the locations collection to retrieve the corresponding city_name
+    default_location = mongo.db.locations.find_one({"_id": ObjectId(city_id)})
+    locations = mongo.db.locations.distinct("name")
+
+    distinct_categories = mongo.db.recommendations.distinct("category")
     
-    return render_template('edit_recommendation.html', recommendation=recommendation)
+    # Get the city_name from the location document
+    city_name_default = default_location.get("name", "")
+    return render_template('edit_recommendation.html', distinct_categories=distinct_categories, cities=locations, recommendation=recommendation, city_name_default=city_name_default)
 
 
 if __name__ == "__main__":
