@@ -105,4 +105,31 @@ nav .right > li > a {
     height: 450px; 
 }
 
+/* Delete Confirmation Page */ 
+
+.square-container {
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.square-card {
+    width: 500px; 
+    height: 300px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.content-container {
+    flex-grow: 1;
+}
+
+.delete-message {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
