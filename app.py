@@ -117,8 +117,8 @@ def city_page(city_name):
         # Render the template with city data and grouped recommendations
         return render_template('view_recommendations.html', city_data=city_data, grouped_recommendations=grouped_recommendations)
     else:
-        # Handle case where city_name is not found in the database
-        return render_template('not_found.html', city_name=city_name)
+       # Raise a 404 error if the provided city name is not found
+            abort(404)
 
 
 @app.route("/add_recommendations", methods=["GET", "POST"])
@@ -156,9 +156,8 @@ def add_recommendations():
 
             return render_template("add_recommendations.html", cities=city_names, categories=categories, city_id=city_id)
         else:
-            # Handle the case where the provided city name is not found
-            flash("City not found", "error")
-            return redirect(url_for("add_recommendations"))
+            # Raise a 404 error if the provided city name is not found
+            abort(404)
 
     else:
         # Handle the GET request, provide initial data for the form
