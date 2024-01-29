@@ -22,7 +22,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/home_page")
 def home_page():
-    return render_template("home.html")
+    return render_template("home_page.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -211,6 +211,11 @@ def delete_recommendation(id):
     mongo.db.recommendations.delete_one({"_id": ObjectId(id)})
     flash("Task Successfully Deleted")
     return redirect(url_for("profile", username=username))
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 
 if __name__ == "__main__":
