@@ -206,9 +206,24 @@ def edit_recommendation(id):
 def delete_recommendation(id):
     recommendation = mongo.db.recommendations.find_one({"_id": ObjectId(id)})
 
+    return render_template("delete_confirmation.html", recommendation=recommendation)
+
+
+@app.route("/delete_confirmation/<id>")
+def delete_confirmation(id):
+    recommendation = mongo.db.recommendations.find_one({"_id": ObjectId(id)})
     username = recommendation.get("user")
+    
     mongo.db.recommendations.delete_one({"_id": ObjectId(id)})
+    
     flash("Task Successfully Deleted")
+    return redirect(url_for("profile", username=username))
+
+@app.route("/delete_cancel/<id>")
+def delete_cancel(id):
+    recommendation = mongo.db.recommendations.find_one({"_id": ObjectId(id)})
+    username = recommendation.get("user")
+    
     return redirect(url_for("profile", username=username))
 
 
