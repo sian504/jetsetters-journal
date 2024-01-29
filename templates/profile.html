@@ -1,17 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-
+    
+<div class="row">
     <h3 class="heading">
         Hey {{ username }}!
     </h3>
-
     <h4 class="text">
         Where to next? Click the map markers to view or add your recommendations....
     </h4>
-
-    <div class="col s12 card-panel teal lighten-1">
-        <br>
-        <div id="map" class="col s12"></div>    
-    </div>
-
+</div>
+<div class="row col s12 card-panel teal lighten-1">
+    <div id="map" class="col s12"></div>    
+</div>
 {% endblock %}
