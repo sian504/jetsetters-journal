@@ -93,6 +93,12 @@ nav .right > li > a {
     padding: 10px;
 }
 
+/* Labels on Add/Edit Recommendation forms*/ 
+
+.input-field label {
+    font-size: 20px; /* Set your desired font size */
+}
+
 /* Profile page map */ 
 
 #map { 
