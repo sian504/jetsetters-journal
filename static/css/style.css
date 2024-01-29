@@ -41,6 +41,10 @@ body {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
         }
 
+nav .right > li > a {
+    font-size: 20px;
+        }
+
 /* Flash message text */
         
 .flashes h4 {
