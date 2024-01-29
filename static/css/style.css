@@ -70,8 +70,23 @@ body {
     font-size: 30px;
         }
 
+.recommendation-list li {
+    border: 1px solid #ccc; 
+    padding: 10px; 
+    margin-bottom: 10px; 
+        }
+
 .recommendation-list li a {
     margin-left: 30px; 
+}
+
+.recommendation-list li p {
+    color: #000000;
+}
+
+.collapsible-body {
+    background-color: #fafafa; 
+    padding: 10px;
 }
 
 /* Profile page map */ 
