@@ -10,8 +10,8 @@ The [live website is here](https://the-jetsetters-journal-834f32dcb176.herokuapp
 
 ## Table of Contents
 
-### User Experience (UX)
-- Strategy
+### User Experience (UX) 
+- [Strategy](#strategy)
 - Scope
 - Structure
 - Skeleton
