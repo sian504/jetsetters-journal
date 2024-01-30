@@ -5,10 +5,18 @@ $(document).ready(function () {
     $('select').formSelect();
 
     // Leaflet.js map initialization
-    var map;
+    var map = null; // Initialize map variable
+    var mapInitialized = false; // Flag to track whether the map is initialized
 
     // Function to set up the map based on screen width
     function setupMap() {
+        // Check if the map is already initialized
+        if (mapInitialized) {
+            // If already initialized, just update the view or perform other actions
+            map.setView([0, 0], 2);
+            return;
+        }
+
         // Default view for larger screens
         var defaultView = [0, 0];
         var defaultZoom = 2;
@@ -50,6 +58,9 @@ $(document).ready(function () {
                 window.location.href = '/city/' + encodeURIComponent(city);
             });
         });
+
+        // Set the flag to indicate that the map is initialized
+        mapInitialized = true;
     }
 
     // Call the setupMap function on document ready and window resize
