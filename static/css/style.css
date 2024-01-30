@@ -15,6 +15,7 @@ body {
     padding-bottom: 45px;
 }
 
+
 /* Headings */
 
 .heading {
@@ -143,5 +144,13 @@ nav .right > li > a {
 
 #map {
     margin-top: 10px;
+}
+
+
+ /* Media query for small screens */
+ @media only screen and (max-width: 600px) {
+    .brand-logo-custom {
+        font-size: 18px !important;
+    }
 }
 
