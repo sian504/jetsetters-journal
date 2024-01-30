@@ -20,6 +20,8 @@ The Jetsetter Journal is a website for frequent travellers to share their recomm
 ### Deployment
 ### Credits
 
+-----
+
 ## Strategy
 
 ### Site goals
@@ -45,6 +47,7 @@ The Jetsetter Journal is a website for frequent travellers to share their recomm
 - I want to add my own recommendations.
 - I want to view, edit, and delete my recommendations.
 
+------
 
 ## Scope
 
@@ -66,9 +69,9 @@ The table below shows all planned features of the site, detailing the user type,
 | Users with an account | Add recommendation functionality                              |      5      |       5     |
 | Users with an account | Edit/ delete functionality for user’s own recommendations     |       4     |        5    |
 
+------
 
-
-[Insert user flow diagram here.]
+![Picture of the website on different devices](static/images/flow_chart.png)
 
 The site will consist of 10 pages, including:
 
