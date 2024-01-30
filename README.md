@@ -18,12 +18,11 @@ The [live website is here](https://the-jetsetters-journal-834f32dcb176.herokuapp
 - [Surface](#surface)
 
 ### [Features](#features)
-### Technologies
-### Testing
-- Test Results and Bugs
-### Future Improvements
-### Deployment
-### Credits
+### [Technologies](#technologies)
+### [Testing](#testing)
+### [Future Improvements](#futureimprovements)
+### [Deployment](#deployment)
+### [Credits](#credits)
 
 -----
 
