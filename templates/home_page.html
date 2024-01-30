@@ -11,13 +11,24 @@
     </p>
 </div>
 <div>
-    <ul class="recommendation-list">
-        {% for recommendation in recommendations %}
+    <ul class="collapsible">
+        {% for category, recommendations in grouped_recommendations.items() %}
             <li>
-                <p class="view-text"><strong>User:</strong> {{ recommendation.user }}</p>
-                <p class="view-text"><strong>City:</strong> {{ recommendation.city_name }}</p>
-                <p class="view-text"><strong>Category:</strong> {{ recommendation.category }}</p>
-                <p class="view-text">{{ recommendation.comment }}</p>
+                <div class="collapsible-header white-text teal lighten-1 text-shadow">
+                    <i class="fas fa-caret-down"></i>
+                    {{ category }}
+                </div>
+                <div class="collapsible-body">
+                    <ul class="recommendation-list">
+                        {% for recommendation in recommendations %}
+                            <li>
+                                <p class="view-text"><strong>User:</strong> {{ recommendation.user }}</p>
+                                <p class="view-text"><strong>City:</strong> {{ recommendation.city_name }}</p>
+                                <p class="view-text">{{ recommendation.comment }}</p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </li>
         {% endfor %}
     </ul>

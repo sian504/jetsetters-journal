@@ -30,8 +30,17 @@ def home_page():
         default_location = mongo.db.locations.find_one({"_id": ObjectId(city_id)})
         city_name = default_location.get("name", "")
         recommendation["city_name"] = city_name
-        
-    return render_template("home_page.html", recommendations=recommendations)
+
+    # Group recommendations by category
+    grouped_recommendations = {}
+    for recommendation in recommendations:
+        category = recommendation.get('category')
+        if category not in grouped_recommendations:
+            grouped_recommendations[category] = []
+        grouped_recommendations[category].append(recommendation)
+
+
+    return render_template("home_page.html", recommendations=recommendations, grouped_recommendations=grouped_recommendations)
 
 
 @app.route("/register", methods=["GET", "POST"])
