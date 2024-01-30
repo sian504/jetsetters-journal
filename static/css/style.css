@@ -33,6 +33,13 @@ body {
     text-align: center;
         }
 
+/* Font */
+
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+
 /* Body text */
 
 .text {
