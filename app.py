@@ -19,6 +19,9 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+from flask import jsonify
+
+
 @app.route("/")
 @app.route("/home_page", methods=["GET", "POST"])
 def home_page():
