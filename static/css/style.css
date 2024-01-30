@@ -159,6 +159,9 @@ nav .right > li > a {
     .view-heading {
         font-size: 35px; 
     }
+    .waves-effect {
+        margin-bottom: 10px; 
+    }
 }
 
 
