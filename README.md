@@ -123,41 +123,21 @@ All data was stored in a Mongodb non-relational database. The database itself wa
 
 Each user was structured in a document consisting of the following information:
 
-{"_id":{
-    "$oid":"65aa84745a73b727dbd8c693"
-    },
-    "username":" ",
-    "password":" "
-    }
+![Example of a document in Users collection](static/images/users.png)
 
 Users signed up with a username and a password which was hashed by Werkzeug before being stored in Mongodb. All recommendations added to the platform were assigned with the corresponding username who created them. 
 
 
 Each location available to view and add recommendations to was structured like so: 
 
-{"_id":{
-    "$oid":"65965e27b3c707b84b9c0eb3"
-    },
-    "country":"USA",
-    "description":"Immerse yourself in the vibrant energy of New York City, where towering skyscrapers, iconic landmarks,
-     diverse cultures, and a pulsating rhythm create an unforgettable urban experience.",
-    "name":"New York City"
-    }
+![Example of a document in Locations collection](static/images/location.png)
 
 The location information was dynamically rendered to the view_recommendations page depending on which location was clicked on the interactive map. 
 
 
 Each recommendation added to the application was structured in the following way: 
 
-{"_id":{
-    "$oid":"65ae84f4338fb61a690c8fdb"
-    },
-    "city_id":{"$oid":"65965e27b3c707b84b9c0eb3"},
-    "user":"sianlouise",
-    "category":"Things to do",
-    "comment":"Highly recommend checking out the High Line in NYC—I absolutely 
-    enjoyed the scenic walk, the greenery, and the vibrant atmosphere!"
-    }
+![Example of a document in Recommendations collection](static/images/recommendations.png)
 
 All recommendations were assigned a city_id which corresponds to the object_id of the location that each recommendation was for. For example, a recommendation for Bangkok contained the object_Id for the location of Bangkok. This was stored under the field city_id. This was useful when adding recommendations or searching for specific recommendations under a specific city name. 
 
