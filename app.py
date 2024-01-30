@@ -33,6 +33,8 @@ def home_page():
                 {"city_id": {"$in": [location['_id'] for location in mongo.db.locations.find({"name": {"$regex": query, "$options": "i"}})]}}
             ]}
         ))
+        # Flash a success message
+        flash("Success! Check the drop-down below to view results.", "success")
     else:
         recommendations = list(mongo.db.recommendations.find())
 
