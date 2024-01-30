@@ -11,8 +11,8 @@
     </p>
 </div>
 <div class="row card-panel grey lighten-5 search-card">
-    <h6 class="center-align black-text text-darken-4 search-header">Search by username, category or content.</h6>
-    <form action="#" method="" class="col s12 search-form">
+    <h6 class="center-align black-text text-darken-4 search-header">Search by username, category or city name.</h6>
+    <form action="{{ url_for('home_page') }}" method="POST" class="col s12 search-form">
         <div class="row valign-wrapper center-align">
             <div class="input-field col s12" id="search-div">
                 <i class="fas fa-search prefix light-blue-text text-darken-4 search-icon"></i>
@@ -22,9 +22,8 @@
         </div>
         <div class="row valign-wrapper right-align">
             <div class="col s12 m6">
-                <a href="#" class="red btn"></i> Reset</a>
-                <button type="submit" class="light-blue darken-1 btn">Search
-                </button>
+                <a href="{{ url_for('home_page') }}" class="red btn"></i> Reset</a>
+                <button type="submit" class="light-blue darken-1 btn">Search</button>
             </div>
         </div>
     </form>
@@ -54,3 +53,6 @@
 </div>
 
 {% endblock %}
+
+
+

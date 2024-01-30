@@ -6,6 +6,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from pymongo import TEXT
 if os.path.exists("env.py"):
     import env
 
@@ -19,10 +20,21 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-@app.route("/")
-@app.route("/home_page")
+@app.route("/home_page", methods=["GET", "POST"])
 def home_page():
-    recommendations = list(mongo.db.recommendations.find())
+    if request.method == "POST":
+        query = request.form.get("query")
+        # Query MongoDB based on the search query
+        recommendations = list(mongo.db.recommendations.find(
+            {"$or": [
+                {"user": {"$regex": query, "$options": "i"}},
+                {"category": {"$regex": query, "$options": "i"}},
+                {"comment": {"$regex": query, "$options": "i"}},
+                {"city_id": {"$in": [location['_id'] for location in mongo.db.locations.find({"name": {"$regex": query, "$options": "i"}})]}}
+            ]}
+        ))
+    else:
+        recommendations = list(mongo.db.recommendations.find())
 
     # Add city_name to each recommendation
     for recommendation in recommendations:
@@ -39,10 +51,9 @@ def home_page():
             grouped_recommendations[category] = []
         grouped_recommendations[category].append(recommendation)
 
-
     return render_template("home_page.html", recommendations=recommendations, grouped_recommendations=grouped_recommendations)
 
-
+    
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
