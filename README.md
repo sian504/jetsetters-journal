@@ -1,6 +1,8 @@
+![Picture of the website on different devices](static/images/responsive_img.png)
+
 # The Jetsetter Journal
 
-The Jetsetter Journal is a website for frequent travellers to share their recommendations for specific destinations or to pick up suggestions for upcoming holidays. The [live website is here](https://your-website-url).
+The Jetsetter Journal is a website for frequent travellers to share their recommendations for specific destinations or to pick up suggestions for upcoming holidays. The [live website is here](https://the-jetsetters-journal-834f32dcb176.herokuapp.com/).
 
 ## Table of Contents
 
@@ -29,7 +31,6 @@ The Jetsetter Journal is a website for frequent travellers to share their recomm
 #### As a first-time user:
 - I want to understand the purpose of the website as soon as I land on it.
 - I want the site to be fully responsive and viewable on any device.
-- I want to contact the site administrators to make suggestions or ask for support.
 - I want to easily return to the homepage if any errors occur.
 
 #### As a user without an account:
@@ -44,9 +45,6 @@ The Jetsetter Journal is a website for frequent travellers to share their recomm
 - I want to add my own recommendations.
 - I want to view, edit, and delete my recommendations.
 
-#### As a superuser:
-- I want to add, edit, or delete travel destinations for users to view and add suggestions.
-- I want to edit or delete recommendations created by other users for site maintenance.
 
 ## Scope
 
@@ -54,24 +52,20 @@ The table below shows all planned features of the site, detailing the user type,
 
 | User               | Feature                                                       | Difficulty | Importance |
 |--------------------|---------------------------------------------------------------|------------|------------|
-| All users          | Responsive Design                                              |            |            |
-| All users          | MongoDB database creation to store data                        |            |            |
-| All users          | Navigation                                                    |            |            |
-| All users          | Home page - branding and about section                         |            |            |
-| All users          | Home page - travel destination on map (powered by Google Maps API) with clickable markers |            |            |
-| Users with an account | Travel destination information page with full info with search and filter functionality |            |            |
-| All users          | Log-in functionality                                          |            |            |
-| All users          | Registration functionality                                     |            |            |
-| All users          | Error pages providing home page links                          |            |            |
-| Users with an account | Logout functionality                                        |            |            |
-| Users with an account | Profile page with user’s recommendations                      |            |            |
-| Users with an account | Add recommendation functionality                              |            |            |
-| Users with an account | Edit/ delete functionality for user’s own recommendations     |            |            |
-| Superuser           | Manage locations page (with edit/delete links)                 |            |            |
-| Superuser           | Add location form                                             |            |            |
-| Superuser           | Edit location form                                            |            |            |
-| Superuser           | Delete location functionality                                 |            |            |
-| Superuser           | Edit/ delete other user’s recommendations                    |            |            |
+| All users          | Responsive Design                                              |     3     |      4   |
+| All users          | MongoDB database creation to store data                        |      5      |        5    |
+| All users          | Navigation                                                    |       1    |      4      |
+| All users          | Home page - branding and about section                         |       1     |      2      |
+| All users          | Home page - travel destination on map with clickable markers |      5      |       3     |
+| Users with an account | Travel destination information page with ability to view user recommendations |       3       |      4      |
+| All users          | Log-in functionality                                          |     5       |       5    |
+| All users          | Registration functionality                                     |      5      |      5      |
+| All users          | Error pages providing home page links                          |       2     |     3       |
+| Users with an account | Logout functionality                                        |       5     |       5     |
+| Users with an account | Profile page                                                   |    4        |     4       |
+| Users with an account | Add recommendation functionality                              |      5      |       5     |
+| Users with an account | Edit/ delete functionality for user’s own recommendations     |       4     |        5    |
+
 
 
 [Insert user flow diagram here.]
