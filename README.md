@@ -12,12 +12,12 @@ The [live website is here](https://the-jetsetters-journal-834f32dcb176.herokuapp
 
 ### User Experience (UX) 
 - [Strategy](#strategy)
-- Scope
-- Structure
-- Skeleton
-- Surface
+- [Scope](#scope)
+- [Structure](#structure)
+- [Skeleton](#skeleton)
+- [Surface](#surface)
 
-### Features
+### [Features](#features)
 ### Technologies
 ### Testing
 - Test Results and Bugs
