@@ -80,7 +80,7 @@ The table below shows all features of the site, detailing the user type, difficu
 
 ![Flow diagram of how the app will function](static/images/flow_chart.png)
 
-The site consists of 9 pages, including:
+The site consists of 8 pages, including:
 
 ### Home page and search page
 - An about section explaining the purpose of the app
@@ -107,9 +107,6 @@ The site consists of 9 pages, including:
 
 ### Delete recommendations page
 - Seeks confirmation from user that they wish to delete a recommendation
-
-### Logout page
-- Logout confirmation page
 
 -----
 
@@ -151,7 +148,17 @@ Each recommendation is assigned a unique object_id, allowing for targeted querie
 
 ## Skeleton
 
-[Wireframes for Desktop, Tablet, and Mobile.]
+I've linked the wireframes for each page below: 
+
+- [Home page](static/wireframes/home_page.png)
+- [Log In page](static/wireframes/logIn_page.png)
+- [Register page](static/wireframes/register_page.png)
+- [Profile page](static/wireframes/profile_page.png)
+- [View recommendations page](static/wireframes/view_recommendations_page.png)
+- [Add recommendations page](static/wireframes/add_recommendations_page.png)
+- [Edit recommendations page](static/wireframes/edit_recommendations_page.png)
+- [Delete confirmation page](static/wireframes/delete_confirmation.png)
+
 
 ## Surface
 
