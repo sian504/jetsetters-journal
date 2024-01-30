@@ -186,5 +186,20 @@ nav .right > li > a {
     }
 }
 
+/* Media query for tablet screens and smaller */
 
+@media only screen and (max-width: 992px) {
+    .sidenav li a {
+        font-size: 25px; 
+        line-height: 2; 
+    }
+
+    .waves-effect {
+        margin-bottom: 10px; 
+    }
+    .custom-card-panel {
+        width: 95%; 
+        margin-top: 10px;
+    }
+}
 
