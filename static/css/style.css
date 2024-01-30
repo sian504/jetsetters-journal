@@ -180,6 +180,10 @@ nav .right > li > a {
     .row > .input-field > label[for="user"] {
         font-size: 15px; 
     }
+    .custom-card-panel {
+        width: 95%; 
+        margin-top: 10px; 
+    }
 }
 
 
