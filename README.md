@@ -162,16 +162,8 @@ I've linked the wireframes for each page below:
 
 ## Surface
 
-### Images
-- Background hero image
+The application is presented with a background hero image throughout. I am using one of my own images as it's suitable for the site's purpose. The nav bar is a solid teal colour and the nav items are white to contrast the navbar. 
 
-### Colors
-- Darker and lighter shades of green
+The majority of the headings and text are white to contrast the blue hero background image. The only exception to this is the recommendations which are in black as they are displayed on a solid white background to ensure readability. 
 
-### Fonts
-- Lobster (hero image text overlay, brand text)
-- Roboto (main font across the site)
-
-Text consistency across pages:
-- Centered title and small summary
-- Remaining content aligned to the left
+The Google font Poppins is used for all the text on the site. This font gives the application a simple but professional feel to it.
