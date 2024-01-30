@@ -266,3 +266,45 @@ I want to add my own recommendations.
 
 The application is linked to a MongoDB database to store user authentication information, travel recommendations, and other location information. 
 
+-----
+
+## Technologies
+
+## What I Used
+
+To create this project I used the following:
+
+- [HTML](https://www.w3schools.com/html/html_intro.asp) - The coding language used to create the structure of the website.
+- [CSS](https://www.w3schools.com/css/css_intro.asp)  -The coding language used to style the site throughout.
+- [Javascript](https://www.w3schools.com/js/js_intro.asp) - The coding language used for all the interactive components of the website. I used Materialize JS, JQuery and my own Javascript script within this project.
+- [Python](https://www.python.org/) - The coding language used for all backend functions.
+- [Leaflet.JS](https://leafletjs.com/ ) - Used to add the interactive map
+- [JQuery](https://jquery.com/) - The Javascript library used to write my script to call the Tasty API.
+- [Jinja](https://jinja.palletsprojects.com/en/3.0.x/) - The templating language used in conjunction with Python.
+- [Heroku](https://www.heroku.com/) - Source to deploy the application.
+- [MongoDB](https://www.mongodb.com/) - The non-relational database that stored all data for this project.
+- [Google Fonts](https://fonts.google.com/) - Fonts for both the headers and the body text were taken from here. The font I used is Poppins.
+- [Font Awesome](https://fontawesome.com/search) - Used for all icons used on the app
+- [Chrome Developer Tools](https://developer.chrome.com/docs/devtools/) - Used to test responsiveness across the site.
+- [GitHub](https://github.com/) - Used as a storage space for my pushed code.
+- [Git](https://git-scm.com/) - Used for version control to make commits and push to GitHub.
+- [CodeAnywhere](https://app.codeanywhere.com/) - The cloud development environment I used to build the site.
+- [Gitpod](https://www.gitpod.io/) - The cloud development environment I shifted to when CodeAnywhere was inaccessible.
+- [Balsamiq](https://balsamiq.cloud/sidwtio/poonp92/rD331) - Used to create the wireframes.
+- [W3C Markup Validation Service](https://validator.w3.org/) - Used to validate all HTML written for the site.
+- [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) - Validated all CSS code written for the site.
+- [JS Hint](https://jshint.com/) - Validated my custom JS file.
+- [Code Institute Python Linter](https://pep8ci.herokuapp.com) - Validated my Python script to ensure I was PEP8 compliant
+- [AmIResponsive](https://ui.dev/amiresponsive) - Used to create the responsive image you see at the top of the README file.
+
+The following modules were run for this project: 
+
+- click==7.1.2
+- dnspython==1.16.0
+- Flask==2.0.1
+- Flask-PyMongo==2.3.0
+- itsdangerous==2.1.0
+- Jinja2==3.1.3
+- pymongo==3.11.3
+- Werkzeug==2.0.1
+
