@@ -10,6 +10,17 @@
         or start searching for recommendations below without an account.
     </p>
 </div>
-
+<div>
+    <ul class="recommendation-list">
+        {% for recommendation in recommendations %}
+            <li>
+                <p class="view-text"><strong>User:</strong> {{ recommendation.user }}</p>
+                <p class="view-text"><strong>City:</strong> {{ recommendation.city_name }}</p>
+                <p class="view-text"><strong>Category:</strong> {{ recommendation.category }}</p>
+                <p class="view-text">{{ recommendation.comment }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
 
 {% endblock %}

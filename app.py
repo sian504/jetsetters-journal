@@ -22,7 +22,16 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/home_page")
 def home_page():
-    return render_template("home_page.html")
+    recommendations = list(mongo.db.recommendations.find())
+
+    # Add city_name to each recommendation
+    for recommendation in recommendations:
+        city_id = recommendation.get("city_id")
+        default_location = mongo.db.locations.find_one({"_id": ObjectId(city_id)})
+        city_name = default_location.get("name", "")
+        recommendation["city_name"] = city_name
+        
+    return render_template("home_page.html", recommendations=recommendations)
 
 
 @app.route("/register", methods=["GET", "POST"])
