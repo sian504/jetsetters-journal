@@ -148,9 +148,15 @@ nav .right > li > a {
 
 
  /* Media query for small screens */
- @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
     .brand-logo-custom {
         font-size: 18px !important;
     }
+
+    #map {
+        height: 300px; 
+    }
 }
+
+
 
