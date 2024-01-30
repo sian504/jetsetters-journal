@@ -41,13 +41,12 @@ The [live website is here](https://the-jetsetters-journal-834f32dcb176.herokuapp
 
 #### As a user without an account:
 - I want to find what I need easily with intuitive navigation.
-- I want to view information about the destination I plan to travel to.
+- I want to search and filter destination information.
 - I want the opportunity to create an account.
 
 #### As a user with an account:
 - I want to sign in to my account.
 - I want to log out successfully.
-- I want to search and filter destination information.
 - I want to add my own recommendations.
 - I want to view, edit, and delete my recommendations.
 
@@ -62,16 +61,13 @@ The table below shows all features of the site, detailing the user type, difficu
 | All users          | Responsive Design                                              |     3     |      4   |
 | All users          | MongoDB database creation to store data                        |      5      |        5    |
 | All users          | Navigation                                                    |       1    |      4      |
-| All users          | Home page - branding and about section                         |       1     |      2      |
-| All users          | Home page - travel destination on map with clickable markers |      5      |       3     |
-| Users with an account | Travel destination information page with ability to view user recommendations |       3       |      4      |
-| All users          | Log-in functionality                                          |     5       |       5    |
+| All users          | Home page - about section and search functionality            |       1     |    2      |
+| Users with an account       | Profile page - travel destination on map with clickable markers |      5      |     3     |
+| Users with an account | Travel destination information page with ability to view user recommendations |  3      |4      |
+| Users with an account        | Log-in/ Logout functionality                         |  5       |       5    |
 | All users          | Registration functionality                                     |      5      |      5      |
 | All users          | Error pages providing home page links                          |       2     |     3       |
-| Users with an account | Logout functionality                                        |       5     |       5     |
-| Users with an account | Profile page                                                   |    4        |     4       |
-| Users with an account | Add recommendation functionality                              |      5      |       5     |
-| Users with an account | Edit/ delete functionality for user’s own recommendations     |       4     |        5    |
+| Users with an account | CRUD functionality                              |      5      |       5     |
 
 ------
 
@@ -166,3 +162,107 @@ The application is presented with a background hero image throughout. I am using
 The majority of the headings and text are white to contrast the blue hero background image. The only exception to this is the recommendations which are in black as they are displayed on a solid white background to ensure readability. 
 
 The Google font Poppins is used for all the text on the site. This font gives the application a simple but professional feel to it.
+
+
+## Features
+
+All features on the app are designed mobile-first as it is likely that users will be viewing this on their phone. The majority of the styling was obtained through Materialize.CSS with custom styling applied particularly for responsiveness.
+
+The colour theme is mostly blue, teal and white. All text has been given the font Poppins. The colour scheme and font have been used throughout for consistency.
+
+The features of the Jetsetters Journal are as follows: 
+
+- Responsive design
+- App linked to Mongodb to store data
+- Intuitive navigation bar
+- Home page with search functionality
+- Profile page with interactive map
+- Travel destination page dynamically rendered 
+- User authentication functionality
+- Error 404 and 500 pages
+- CRUD functionality 
+
+
+### Responsive design
+
+![Desktop view](static/images/desktop_view.png)
+![Mobile view](static/images/mobile_view.png)
+
+The site is designed to be fully responsive, ensuring a seamless user experience across various devices, including desktops, tablets, and mobile phones.
+
+This satisfies the user story: I want the site to be fully responsive and viewable on any device.
+
+
+### Intuitive Navigation Bar
+
+![Logged in navbar](static/images/logged_in.png)
+![Logged out navbar](static/images/logged_out.png)
+
+The navigation bar provides easy access to essential pages, facilitating smooth, intuitive navigation for users. Some navbar items are only accessible to users with accounts making certain functionality only available once the user is authenticated. 
+
+This satisfies the user story: I want to find what I need easily with intuitive navigation.
+
+### Home Page with Search Functionality
+
+![Search bar](static/images/searchbar.png)
+
+The home page features a search bar allowing users to search for travel recommendations based on various criteria, such as user, category, comment, or city.
+
+This satisfies the user stories: 
+
+I want to understand the purpose of the website as soon as I land on it.
+I want to search and filter destination information.
+
+### Profile Page with Interactive Map
+
+![Interactive map](static/images/interactive_map.png)
+
+Users have individual profile pages displaying an interactive map. This allows the users to navigate to the location/ recommendation information that they wish to see in a visually engaging manner.
+
+This satisfies the user story: I want to search and filter destination information.
+
+### Dynamically Rendered Travel Destination Page
+
+![View recommendations page](static/images/view_recs.png)
+
+Travel destination pages are dynamically rendered based on the selected city, displaying relevant recommendations for that location.
+
+This satisfies the user story: I want to search and filter destination information.
+
+### User Authentication Functionality
+
+![Login functionality](static/images/authentication.png)
+![Registration functionality](static/images/authentication_two.png)
+
+Secure user authentication is implemented, allowing users to register, log in, and log out with hashed passwords for enhanced security.
+
+This satisfies the user stories: 
+
+I want the opportunity to create an account
+I want to sign in to my account
+I want to log out successfully
+
+### Error Pages (404 and 500)
+
+![Error](static/images/error.png)
+
+Custom error pages are provided for better user experience in case they encounter a page not found (404) or internal server error (500).
+
+This satisfies the user story: I want to easily return to the homepage if any errors occur.
+
+### CRUD Functionality
+
+![Edit/delete](static/images/crud.png)
+![Add](static/images/crud-two.png)
+
+The application supports CRUD operations (Create, Read, Update, Delete) for travel recommendations, allowing users to add, edit, and delete their own recommendations.
+
+This satisfies the user stories: 
+
+I want to add my own recommendations.
+- I want to view, edit, and delete my recommendations.
+
+### MongoDB Integration
+
+The application is linked to a MongoDB database to store user authentication information, travel recommendations, and other location information. 
+
