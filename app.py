@@ -19,7 +19,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-
+@app.route("/")
 @app.route("/home_page", methods=["GET", "POST"])
 def home_page():
     if request.method == "POST":
@@ -53,7 +53,7 @@ def home_page():
 
     return render_template("home_page.html", recommendations=recommendations, grouped_recommendations=grouped_recommendations)
 
-    
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
