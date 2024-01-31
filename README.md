@@ -389,3 +389,26 @@ Defensive programming was manually tested with the following results:
 | | Click New Here link | Opens Sign Up Modal | Pass | |
 | Log Out | | | | |
 | | Click Logout button | Redirects user to Home page | Pass |  |
+
+I don't have enough experience with TDD to do proper testing on my Javascript and Python functions. Most of this was done with trial and error through running tests in my IDE. 
+
+The same goes for checking my connection with Mongodb. At the start, I had a lot of issues with this and created a separate python file to test my connection with Mongo. It proved to be pretty invaluable in the early stages as I had quite a lot of problems connecting. Big shout out to the tutors at Code Institute for helping me with my env.py file - particularly my MongoURI which has since changed format since the walk-through project was created. 
+
+I did heavily rely on the walk-through project for non-relational databases in the course material so a lot of the CRUD functionality was quite straight forward. 
+
+## Known bugs 
+
+There is an issue with the interactive map not initialising all of the time which I did not have time to fix. I started to notice it when I created a media query to render a different size box and zoom of the map on a smaller screen. I'm not sure if that's a coincidence or not. 
+
+As the problem can be fixed by hard reloading the page, I decided to prioritise other things but I would like to come back to this project at a later date to fix this. 
+
+
+There is also a styling issue on the forms where the drop down inputs highlight in green despite not selecting a city name or category. There was a section of the walk through project that addressed this but unfortunately the JQuery that was provided did not seem to fix the issue. Again, as it didn't impact on the functionality of the app, I decided to prioritise other things but I would like to come back to fix this. 
+
+# Future Improvements 
+
+As has been the case with all of my projects I didn't have a lot of time to complete this app which was a shame as I really enjoyed making it. I'm fond of Python and Javascript and being able to use them together was fun! 
+
+If I'd had more time, I would like to have created superuser access so that an admin account could have complete CRUD functionality over all recommendations. I would also have built an Add location page as well so that more locations could be added from the frontend via the superuser. 
+
+I would also like to build a feature that enabled users with an account to rate other's recommendations. For every good rating that a user got it gave them more status on the page. Think of it as the Jetsetter's Journal version of the Uber driving rating. 
