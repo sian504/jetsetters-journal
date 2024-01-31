@@ -4,9 +4,11 @@ $(document).ready(function () {
     $('.collapsible').collapsible();
     $('select').formSelect();
 
+    // Code assisted by Leaflet JS documentation - https://leafletjs.com
+
     // Leaflet.js map initialization
-    var map = null; // Initialize map variable
-    var mapInitialized = false; // Flag to track whether the map is initialized
+    var map = null; 
+    var mapInitialized = false;
 
     // Function to set up the map based on screen width
     function setupMap() {
@@ -21,12 +23,12 @@ $(document).ready(function () {
         var defaultView = [0, 0];
         var defaultZoom = 2;
 
-        // View for smaller screens (e.g., mobile devices)
+        // View for smaller screens
         var mobileView = [0, 0];
         var mobileZoom = 0.5;
 
-        // Set up the map based on screen width
-        if ($(window).width() < 600) { // Adjust the threshold as needed
+       
+        if ($(window).width() < 600) { 
             map = L.map('map').setView(mobileView, mobileZoom);
         } else {
             map = L.map('map').setView(defaultView, defaultZoom);
@@ -38,7 +40,7 @@ $(document).ready(function () {
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
-        // Add markers or other map features
+        // Add markers 
         L.marker([40.7128, -74.0060]).addTo(map)
             .bindPopup('<a href="#" class="city-link" data-city="New York City"><b>New York City</b></a>');
 
