@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-
+<!-- About section -->
 <div class="text">
     <p>
         Welcome to The Jetsetters Journal!
@@ -10,6 +10,7 @@
         or start searching for recommendations below without an account.
     </p>
 </div>
+<!-- Search bar -->
 <div class="row card-panel grey lighten-5 search-card">
     <h6 class="center-align black-text text-darken-4 search-header">Search by user, category, city name or comment.</h6>
     <form action="{{ url_for('home_page') }}" method="POST" class="col s12 search-form">
@@ -20,6 +21,7 @@
                 <label for="query" class="label-text">Search</label>
             </div>
         </div>
+        <!-- Search and reset buttons -->
         <div class="row valign-wrapper right-align">
             <div class="col s12 m6">
                 <a href="{{ url_for('home_page') }}" class="red btn">Reset</a>
@@ -29,6 +31,7 @@
     </form>
 </div>
 <div>
+    <!-- All recommendations and queried search results-->
     <ul class="collapsible">
         {% for category, recommendations in grouped_recommendations.items() %}
             <li>
