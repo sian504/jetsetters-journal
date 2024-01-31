@@ -489,3 +489,25 @@ You can fork this repository by using the following steps:
 1. Login to GitHub and locate the [GitHub Repository](https://github.com/sian504/jetsetters-journal)
 2. At the top of the Repository just above the "Settings" Button on the menu, locate the "Fork" Button.
 3. Once clicked, you should now have a copy of the original repository in your own GitHub account!
+
+---
+
+## Credits
+
+I have used a number of resources to produce this website, where code has been used found from another source this is credited as a comment within the HTML and CSS files.
+
+I was assisted by various resources including:
+
+[Stack Overflow](https://stackoverflow.com/questions/33108685/advanced-how-to-use-href-in-jinja2) - For giving advice on how to use href in Jinja
+
+[Code Institute](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+NRDB_L5+2022_Q3/courseware/9e2f12f5584e48acb3c29e9b0d7cc4fe/054c3813e82e4195b5a4d8cd8a99ebaa/) - The walkthrough project that gave me the basis of my code.
+
+[Werkzeug] (https://www.typeerror.org/docs/werkzeug~2.0) - Documentation on creating password hashing
+
+[LeafletJS](https://leafletjs.com/) - Documentation to add the interactive map with clickable markers to profile page 
+
+[Stack Overflow](https://stackoverflow.com/questions/9182978/semi-transparent-color-layer-over-background-image) and [Medium](https://medium.com/@miguelznunez/how-to-easily-add-an-image-overlay-to-your-images-with-css-e354a79f530d) For assisting with background image styling
+
+[Mongodb](https://www.mongodb.com/docs/v2.2/reference/operator/query/regex/) For assistance with using regular expressions to create the search queries on the home page 
+
+Finally I would like to thank, my mentor, Harry Dhillon for his continued support throughout my studies with Code Institute.
