@@ -1,5 +1,6 @@
 import os
-from flask import Flask, flash, render_template, redirect, request, session, url_for
+from flask import (
+    Flask, flash, render_template, redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -23,32 +24,40 @@ mongo = PyMongo(app)
 def home_page():
     if request.method == "POST":
         query = request.form.get("query")
-        recommendations = list(mongo.db.recommendations.find(
-            {"$or": [
-                {"user": {"$regex": query, "$options": "i"}},
-                {"category": {"$regex": query, "$options": "i"}},
-                {"comment": {"$regex": query, "$options": "i"}},
-                {"city_id": {"$in": [location['_id'] for location in mongo.db.locations.find({"name": {"$regex": query, "$options": "i"}})]}}
-            ]}
-        ))
-        flash("Success! Check the drop-down below to view results.", "success")
-    else:
-        recommendations = list(mongo.db.recommendations.find())
+    recommendations = list(mongo.db.recommendations.find(
+        {"$or": [
+            {"user": {"$regex": query, "$options": "i"}},
+            {"category": {"$regex": query, "$options": "i"}},
+            {"comment": {"$regex": query, "$options": "i"}},
+            {"city_id": {"$in": [location['_id']
+             for location in mongo.db.locations.find(
+                {"name": {"$regex": query, "$options": "i"}}
+            )]}}
+        ]}
+    ))
+    flash("Success! Check the drop-down to view results.", "success")
+
+
+else:
+    recommendations = list(mongo.db.recommendations.find())
 
     for recommendation in recommendations:
         city_id = recommendation.get("city_id")
-        default_location = mongo.db.locations.find_one({"_id": ObjectId(city_id)})
+        default_location = mongo.db.locations.find_one(
+                {"_id": ObjectId(city_id)})
         city_name = default_location.get("name", "")
         recommendation["city_name"] = city_name
 
     grouped_recommendations = {}
-    for recommendation in recommendations:
-        category = recommendation.get('category')
-        if category not in grouped_recommendations:
-            grouped_recommendations[category] = []
-        grouped_recommendations[category].append(recommendation)
+for recommendation in recommendations:
+    category = recommendation.get('category')
+    if category not in grouped_recommendations:
+        grouped_recommendations[category] = []
+    grouped_recommendations[category].append(recommendation)
 
-    return render_template("home_page.html", recommendations=recommendations, grouped_recommendations=grouped_recommendations)
+return render_template("home_page.html",
+                       recommendations=recommendations,
+                       grouped_recommendations=grouped_recommendations)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -63,7 +72,8 @@ def register():
         else:
             register = {
                 "username": request.form.get("username").lower(),
-                "password": generate_password_hash(request.form.get("password"))
+                "password": generate_password_hash(
+                    request.form.get("password"))
             }
             mongo.db.users.insert_one(register)
 
@@ -81,7 +91,8 @@ def login():
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            if check_password_hash(existing_user["password"], request.form.get("password")):
+            if check_password_hash(existing_user["password"], request.form.get(
+                    "password")):
                 session["user"] = request.form.get("username").lower()
                 return redirect(url_for("profile", username=session["user"]))
             else:
@@ -118,7 +129,8 @@ def city_page(city_name):
     city_data = mongo.db.locations.find_one({'name': city_name})
 
     if city_data:
-        recommendations = list(mongo.db.recommendations.find({"city_id": city_data['_id']}))
+        recommendations = list(
+            mongo.db.recommendations.find({"city_id": city_data['_id']}))
         grouped_recommendations = {}
         for recommendation in recommendations:
             category = recommendation.get('category')
@@ -126,7 +138,9 @@ def city_page(city_name):
                 grouped_recommendations[category] = []
             grouped_recommendations[category].append(recommendation)
 
-        return render_template('view_recommendations.html', city_data=city_data, grouped_recommendations=grouped_recommendations)
+        return render_template(
+            'view_recommendations.html', city_data=city_data,
+            grouped_recommendations=grouped_recommendations)
     else:
         abort(404)
 
@@ -159,7 +173,9 @@ def add_recommendations():
 
             flash("Recommendation successfully added!", "success")
 
-            return render_template("add_recommendations.html", cities=city_names, categories=categories, city_id=city_id)
+            return render_template(
+                "add_recommendations.html", cities=city_names,
+                categories=categories, city_id=city_id)
         else:
             abort(404)
 
@@ -168,7 +184,9 @@ def add_recommendations():
         city_names = [location["name"] for location in locations]
         categories = mongo.db.recommendations.distinct("category")
 
-        return render_template("add_recommendations.html", cities=city_names, categories=categories)
+        return render_template(
+            "add_recommendations.html", cities=city_names,
+            categories=categories)
 
 
 @app.route('/edit_recommendation/<id>', methods=["GET", "POST"])
@@ -178,7 +196,7 @@ def edit_recommendation(id):
     default_location = mongo.db.locations.find_one({"_id": ObjectId(city_id)})
     locations = mongo.db.locations.distinct("name")
     city_name_default = default_location.get("name", "")
-    
+
     if request.method == "POST":
         print("POST request detected")
         comment = request.form.get("comment")
@@ -188,16 +206,20 @@ def edit_recommendation(id):
                 "comment": comment
             }
         }
-        mongo.db.recommendations.update_one({"_id": ObjectId(id)}, update_query)
+        mongo.db.recommendations.update_one(
+            {"_id": ObjectId(id)}, update_query)
         flash("Task Successfully Updated")
 
-    return render_template('edit_recommendation.html', recommendation=recommendation, city_name_default=city_name_default)
+    return render_template
+    ('edit_recommendation.html', recommendation=recommendation,
+     city_name_default=city_name_default)
 
 
 @app.route("/delete_recommendation/<id>")
 def delete_recommendation(id):
     recommendation = mongo.db.recommendations.find_one({"_id": ObjectId(id)})
-    return render_template("delete_confirmation.html", recommendation=recommendation)
+    return render_template(
+        "delete_confirmation.html", recommendation=recommendation)
 
 
 @app.route("/delete_confirmation/<id>")
@@ -227,4 +249,6 @@ def internal_server_error(e):
 
 
 if __name__ == "__main__":
-    app.run(host=os.environ.get("IP"), port=int(os.environ.get("PORT")), debug=True)
+    app.run(host=os.environ.get("IP"),
+            port=int(os.environ.get("PORT")),
+            debug=True)
