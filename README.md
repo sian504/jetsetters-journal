@@ -355,3 +355,37 @@ Considering that I was close to the project deadline, I decided that I would pri
 
 From the report and the error in the console, I believe there's an error relating to the interactive map that is slowing the performance of the app. More on this error later! 
 
+## Defensive Programming 
+
+Defensive programming was manually tested with the following results: 
+
+| Page | User Action | Expected Result | Pass/Fail | Comments |
+| --- | --- | --- | --- | --- |
+| Home Page | | | | |
+| | Click on Logo | Redirection to Home page | Pass | |
+| | Click on Home link in navbar | Redirection to Home page | Pass | |
+| | Click on Search Bar | cursor enters input field | Pass | |
+| | Type a user name and Press Enter | Redirection to Search-results page | Pass | |
+| | Type a city name and Press Enter | Redirection to Search-results page | Pass | |
+| | Click on the Nav Bar Login link | Login page opens | Pass | |
+| | Click on the Nav Bar Register link | Register page opens | Pass | |
+| Register | | | | |
+| | Click on the Nav Bar Register link | Register page opens | Pass | |
+| | Enter valid User Name | Field will only accept alphanumeric username | Pass | |
+| | Enter valid password | Field will only accept alphanumeric password format | Pass | |
+| | Click Register button with valid Username & Password | Redirects user to Profile page | Pass | |
+| | Click Register button with empty Password field | Prompts for Password | Pass | |
+| | Click Register button with empty Username field | Prompts for Username | Pass | |
+| | Click Register button with both input fields empty | Prompts for input | Pass | |
+| | Click Already Registered link | Opens Log In Modal | Pass | |
+| Log In | | | | |
+| | Click on the Login link | Redirection to Login page | Pass | |
+| | Enter valid User Name | Field will only accept alphanumeric username | Pass | |
+| | Enter valid password | Field will only accept alphanumeric password format | Pass | |
+| | Click Log In button with valid Username & Password | Redirects user to Library page | Pass | |
+| | Click Log In button with empty Password field | Prompts for Password | Pass | |
+| | Click Log In button with empty Username field | Prompts for Username | Pass | |
+| | Click Log In button with both input fields empty | Prompts for input | Pass | |
+| | Click New Here link | Opens Sign Up Modal | Pass | |
+| Log Out | | | | |
+| | Click Logout button | Redirects user to Home page | Pass |  |
