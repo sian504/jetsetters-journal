@@ -2,7 +2,7 @@
 
 # The Jetsetter Journal
 
-The Jetsetter Journal is a website for frequent travellers to search for inspiration for their upcoming holidys. Users are also able to share and manage their own recommendations via their profile page.
+The Jetsetter Journal is a website for frequent travellers to search for inspiration for their upcoming holidays. Users are also able to share and manage their own recommendations via their profile page.
 
 The app is made with Python using the Flask framework, data is stored in a MongoDB database and is hosted on Heroku.
 
@@ -423,7 +423,7 @@ This project uses [MongoDB](https://www.mongodb.com) for the Non-Relational Data
 
 To setup my MongoDB Database URI, signed into their site, then followed these steps:
 - I Navigated to the Cluster I wished to set up my database in and clicked on collections.
-- I clicked create database and set up my database called blogsite.
+- I clicked create database and set up my database called The Jetsetters Journal.
 - I then set up the three collections I needed for the project, Users, Locations and Recommendations. 
 - I clicked on the Connect button.
 - I clicked Connect Your Application.
