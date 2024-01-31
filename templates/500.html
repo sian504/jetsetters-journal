@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-
+<!-- 500 error message -->
     <div class="row card-panel grey lighten-5 col-12">
         <div>
             <h2 class="center-align">
@@ -10,6 +10,7 @@
                 Oops! Looks like something went wrong! 
             </h4>
         </div>
+<!-- Redirect to homepage -->
         <div class="center-align">
             <a href="{{ url_for('home_page') }}"  class="waves-effect waves-light btn-small teal lighten-1-text text-darken-4">Take me home!</a>
         </div>
