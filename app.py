@@ -18,13 +18,14 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-
+# Search function on homepage
 @app.route("/")
 @app.route("/home_page", methods=["GET", "POST"])
 def home_page():
     if request.method == "POST":
         query = request.form.get("query")
         # Query MongoDB based on the search query
+        #Code assisted by https://www.mongodb.com/docs/v2.2/reference/operator/query/regex/
         recommendations = list(mongo.db.recommendations.find(
             {"$or": [
                 {"user": {"$regex": query, "$options": "i"}},
@@ -70,6 +71,7 @@ def home_page():
         grouped_recommendations=grouped_recommendations)
 
 
+ # Function to login
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -92,6 +94,7 @@ def login():
     return render_template("login.html")
 
 
+ # Function to register a user 
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -116,6 +119,7 @@ def register():
     return render_template("register.html")
 
 
+#Function to render the profile page for session user
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     username = mongo.db.users.find_one(
@@ -127,6 +131,7 @@ def profile(username):
     return redirect(url_for("login"))
 
 
+ # Function to logout
 @app.route("/logout")
 def logout():
     flash("You have been logged out")
@@ -134,6 +139,7 @@ def logout():
     return redirect(url_for("login"))
 
 
+ # Function to dynamically render city info based on the selection of user on interactive map
 @app.route('/city/<city_name>')
 def city_page(city_name):
     city_data = mongo.db.locations.find_one({'name': city_name})
@@ -155,6 +161,7 @@ def city_page(city_name):
         abort(404)
 
 
+ # Function to add a recommendation
 @app.route("/add_recommendations", methods=["GET", "POST"])
 def add_recommendations():
     if request.method == "POST":
@@ -199,6 +206,7 @@ def add_recommendations():
             categories=categories)
 
 
+ # Function to edit a recommendation
 @app.route('/edit_recommendation/<id>', methods=["GET", "POST"])
 def edit_recommendation(id):
     recommendation = mongo.db.recommendations.find_one({"_id": ObjectId(id)})
@@ -225,6 +233,7 @@ def edit_recommendation(id):
         city_name_default=city_name_default)
 
 
+ # Function to initiate a deletion of a recommendation
 @app.route("/delete_recommendation/<id>")
 def delete_recommendation(id):
     recommendation = mongo.db.recommendations.find_one({"_id": ObjectId(id)})
@@ -232,6 +241,7 @@ def delete_recommendation(id):
         "delete_confirmation.html", recommendation=recommendation)
 
 
+ # Function to confirm a deletion of a recommendation
 @app.route("/delete_confirmation/<id>")
 def delete_confirmation(id):
     recommendation = mongo.db.recommendations.find_one({"_id": ObjectId(id)})
@@ -241,6 +251,7 @@ def delete_confirmation(id):
     return redirect(url_for("profile", username=username))
 
 
+ # Function to cancel a deletion of a recommendation
 @app.route("/delete_cancel/<id>")
 def delete_cancel(id):
     recommendation = mongo.db.recommendations.find_one({"_id": ObjectId(id)})
@@ -248,11 +259,13 @@ def delete_cancel(id):
     return redirect(url_for("profile", username=username))
 
 
+ # Render error 404 page
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
 
 
+ # Render error 500 page
 @app.errorhandler(500)
 def internal_server_error(e):
     return render_template('500.html'), 500
