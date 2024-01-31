@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-
+<!-- Delete confirmation message -->
 <div class="row">
     <div class="col s12 m6 offset-m3 center-align">
         <div class="card-panel grey lighten-5 square-card custom-card-panel">
@@ -12,6 +12,7 @@
                 </p>
             </div>
             <div class="button-container">
+                <!-- Buttons to confirm or cancel deletion -->
                 <a href="{{ url_for('delete_confirmation', id=recommendation._id) }}" class="waves-effect waves-light btn-small red darken-1">Delete</a>
                 <a href="{{ url_for('profile', username=session['user']) }}" class="waves-effect waves-light btn-small teal darken-1">Cancel</a>
             </div>
