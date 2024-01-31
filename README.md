@@ -309,7 +309,19 @@ The following modules were run for this project:
 - pymongo==3.11.3
 - Werkzeug==2.0.1
 
-## Testing 
+## Testing
+
+The project was deployed early to gather feedback throughout development and to find any bugs. I used Chrome Dev Tools to help test responsiveness.
+
+Chrome Dev Tools was used to emulate the following devices: 
+
+- Apple iPhone SE
+- Apple iPhone XR
+- Apple iPhone 12 Pro
+- Google Pixel 5
+- Samsung Galaxy S8+
+
+The project was also manually tested on the iPhone 12 Pro Max and Samsung Galaxy 20FE.
 
 All HTML pages were validated with [W3C Markup Validation Service](https://validator.w3.org/). The only error and warnings that were flagged were the url for links and Jinja templating.  
 
@@ -337,8 +349,9 @@ I checked for PEP8 compliance with the [Code Institute Python Linter](https://pe
 
 Lighthouse is a feature of Chrome developer tools that performs an audit of any URL that it's given and returns an overall score based on website's performance. When I audited the site it returned this: 
 
-![Lighthouse Results]()
+![Lighthouse Results](static/images/lighthouse.png)
 
-Considering that I was close to the project deadline and that this was so close to a 'good' score, I decided that I would prioritise the documentation write up over improving this. To improve the Lighthouse score I compressed my image with Tiny JPG to improve the load time. 
+Considering that I was close to the project deadline, I decided that I would prioritise the documentation write up over improving this.
 
-I also think the use of the Tasty API would impact on the performance of the site. As the API is free to use, I believe this would impact on the performance of the site causing it to be slow.
+From the report and the error in the console, I believe there's an error relating to the interactive map that is slowing the performance of the app. More on this error later! 
+
