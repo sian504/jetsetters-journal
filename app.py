@@ -24,40 +24,72 @@ mongo = PyMongo(app)
 def home_page():
     if request.method == "POST":
         query = request.form.get("query")
-    recommendations = list(mongo.db.recommendations.find(
-        {"$or": [
-            {"user": {"$regex": query, "$options": "i"}},
-            {"category": {"$regex": query, "$options": "i"}},
-            {"comment": {"$regex": query, "$options": "i"}},
-            {"city_id": {"$in": [location['_id']
-             for location in mongo.db.locations.find(
-                {"name": {"$regex": query, "$options": "i"}}
-            )]}}
-        ]}
-    ))
-    flash("Success! Check the drop-down to view results.", "success")
+        # Query MongoDB based on the search query
+        recommendations = list(mongo.db.recommendations.find(
+            {"$or": [
+                {"user": {"$regex": query, "$options": "i"}},
+                {"category": {"$regex": query, "$options": "i"}},
+                {"comment": {"$regex": query, "$options": "i"}},
+                {"city_id": {"$in": [location['_id']
+                 for location in mongo.db.locations.find(
+                    {"name": {"$regex": query, "$options": "i"}})]}}
+            ]}
+        ))
 
+        # Check if there are search results
+        if recommendations:
+            # Flash a success message
+            flash(
+                "Success! Check the drop-down below to view results.", 
+                "success")
+        else:
+            # Flash a message indicating no results
+            flash("No results found.", "info")
 
-else:
-    recommendations = list(mongo.db.recommendations.find())
+    else:
+        recommendations = list(mongo.db.recommendations.find())
 
+    # Add city_name to each recommendation
     for recommendation in recommendations:
         city_id = recommendation.get("city_id")
         default_location = mongo.db.locations.find_one(
-                {"_id": ObjectId(city_id)})
+            {"_id": ObjectId(city_id)})
         city_name = default_location.get("name", "")
         recommendation["city_name"] = city_name
 
+    # Group recommendations by category
     grouped_recommendations = {}
-for recommendation in recommendations:
-    category = recommendation.get('category')
-    if category not in grouped_recommendations:
-        grouped_recommendations[category] = []
-    grouped_recommendations[category].append(recommendation)
+    for recommendation in recommendations:
+        category = recommendation.get('category')
+        if category not in grouped_recommendations:
+            grouped_recommendations[category] = []
+        grouped_recommendations[category].append(recommendation)
 
-return render_template("home_page.html",
-                       recommendations=recommendations,
-                       grouped_recommendations=grouped_recommendations)
+    return render_template(
+        "home_page.html", recommendations=recommendations,
+        grouped_recommendations=grouped_recommendations)
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            if check_password_hash(existing_user["password"], request.form.get(
+                    "password")):
+                session["user"] = request.form.get("username").lower()
+                return redirect(url_for("profile", username=session["user"]))
+            else:
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("login"))
+
+        else:
+            flash("Incorrect Username and/or Password")
+            return redirect(url_for("login"))
+
+    return render_template("login.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -82,28 +114,6 @@ def register():
             return redirect(url_for("profile", username=session["user"]))
 
     return render_template("register.html")
-
-
-@app.route("/login", methods=["GET", "POST"])
-def login():
-    if request.method == "POST":
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
-
-        if existing_user:
-            if check_password_hash(existing_user["password"], request.form.get(
-                    "password")):
-                session["user"] = request.form.get("username").lower()
-                return redirect(url_for("profile", username=session["user"]))
-            else:
-                flash("Incorrect Username and/or Password")
-                return redirect(url_for("login"))
-
-        else:
-            flash("Incorrect Username and/or Password")
-            return redirect(url_for("login"))
-
-    return render_template("login.html")
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
@@ -208,11 +218,11 @@ def edit_recommendation(id):
         }
         mongo.db.recommendations.update_one(
             {"_id": ObjectId(id)}, update_query)
-        flash("Task Successfully Updated")
+        flash("Recommendation Successfully Updated")
 
-    return render_template
-    ('edit_recommendation.html', recommendation=recommendation,
-     city_name_default=city_name_default)
+    return render_template(
+        'edit_recommendation.html', recommendation=recommendation,
+        city_name_default=city_name_default)
 
 
 @app.route("/delete_recommendation/<id>")
@@ -252,3 +262,4 @@ if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
+            
