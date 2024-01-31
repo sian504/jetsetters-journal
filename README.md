@@ -279,7 +279,8 @@ To create this project I used the following:
 - [Javascript](https://www.w3schools.com/js/js_intro.asp) - The coding language used for all the interactive components of the website. I used Materialize JS, JQuery and my own Javascript script within this project.
 - [Python](https://www.python.org/) - The coding language used for all backend functions.
 - [Leaflet.JS](https://leafletjs.com/ ) - Used to add the interactive map
-- [JQuery](https://jquery.com/) - The Javascript library used to write my script to call the Tasty API.
+- [JQuery](https://jquery.com/) - The Javascript library used to write custom script.
+- [MaterializeCSS](https://materializecss.com/) - The CSS framework used for most of my styling.
 - [Jinja](https://jinja.palletsprojects.com/en/3.0.x/) - The templating language used in conjunction with Python.
 - [Heroku](https://www.heroku.com/) - Source to deploy the application.
 - [MongoDB](https://www.mongodb.com/) - The non-relational database that stored all data for this project.
@@ -308,3 +309,36 @@ The following modules were run for this project:
 - pymongo==3.11.3
 - Werkzeug==2.0.1
 
+## Testing 
+
+All HTML pages were validated with [W3C Markup Validation Service](https://validator.w3.org/). The only error and warnings that were flagged were the url for links and Jinja templating.  
+
+![HTML validation](static/images/html_validation.png)
+
+
+My custom CSS file was validated with [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/).
+
+![CSS validation](static/images/css.png)
+
+
+My custom JS file was validated with [JS Hint](https://jshint.com/)
+
+All warnings were corrected by prefixing my code with the comments: /*global $, L*/
+These were global variables defined outside of the functions as I was using JQuery and LeafletJS. 
+
+![JS validation](static/images/jshint.png)
+
+
+I checked for PEP8 compliance with the [Code Institute Python Linter](https://pep8ci.herokuapp.com).
+
+![Python Linter](static/images/python.png)
+
+### Lighthouse
+
+Lighthouse is a feature of Chrome developer tools that performs an audit of any URL that it's given and returns an overall score based on website's performance. When I audited the site it returned this: 
+
+![Lighthouse Results]()
+
+Considering that I was close to the project deadline and that this was so close to a 'good' score, I decided that I would prioritise the documentation write up over improving this. To improve the Lighthouse score I compressed my image with Tiny JPG to improve the load time. 
+
+I also think the use of the Tasty API would impact on the performance of the site. As the API is free to use, I believe this would impact on the performance of the site causing it to be slow.
