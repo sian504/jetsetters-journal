@@ -412,3 +412,80 @@ As has been the case with all of my projects I didn't have a lot of time to comp
 If I'd had more time, I would like to have created superuser access so that an admin account could have complete CRUD functionality over all recommendations. I would also have built an Add location page as well so that more locations could be added from the frontend via the superuser. 
 
 I would also like to build a feature that enabled users with an account to rate other's recommendations. For every good rating that a user got it gave them more status on the page. Think of it as the Jetsetter's Journal version of the Uber driving rating. 
+
+## Deployment 
+
+The Website has been deployed using Heroku [Here](https://the-jetsetters-journal-834f32dcb176.herokuapp.com/home_page) using the method below:
+
+### MongoDB Non-Relational Database
+
+This project uses [MongoDB](https://www.mongodb.com) for the Non-Relational Database.
+
+To setup my MongoDB Database URI, signed into their site, then followed these steps:
+- I Navigated to the Cluster I wished to set up my database in and clicked on collections.
+- I clicked create database and set up my database called blogsite.
+- I then set up the three collections I needed for the project, Users, Locations and Recommendations. 
+- I clicked on the Connect button.
+- I clicked Connect Your Application.
+- I copied the connection string, and replaced `password` with my own password.
+- This was then stored in my env.py file and used in config variables when deploying my heroku app.
+
+### Heroku Deployment
+
+- I logged into my Heroku Account. 
+- I clicked on New and choose 'Create New App'
+- I choose a unique name for my app and set the region to Europe. 
+- I then chose Github as the deployment method and searched for my repo name. 
+- I then clicked on settings and updated the config variables. 
+- I navigated back to the deploy and enabled automatic deployment. 
+
+Heroku needs two additional files in order to deploy properly.
+- requirements.txt
+- Procfile
+
+You can install this project's **requirements** (where applicable) using:
+- `pip3 install -r requirements.txt`
+
+You can update your requirements.txt file using:
+- `pip3 freeze --local > requirements.txt`
+
+The **Procfile** can be created with the following command:
+- `echo web: python app.py > Procfile`
+
+This project can be cloned or forked in order to make a local copy on your own system.
+
+For either method, you will need to install any applicable packages found within the *requirements.txt* file.
+- `pip3 install -r requirements.txt`.
+
+You will need to create a new file called `env.py` at the root-level which contains your own environment variables.
+
+```
+os.environ.setdefault("IP", "0.0.0.0")
+os.environ.setdefault("MONGO_DBNAME", "user's own value")
+os.environ.setdefault("MONGO_URI", "user's own value")
+os.environ.setdefault("PORT", "5000")
+os.environ.setdefault("SECRET_KEY", "user's own value")`
+```
+
+#### Cloning
+
+You can clone the repository by following these steps:
+
+1. Go to the [GitHub repository](https://github.com/sian504/jetsetters-journal) 
+2. Locate the Code button above the list of files and click it 
+3. Select if you prefer to clone using HTTPS, SSH, or GitHub CLI and click the copy button to copy the URL to your clipboard
+4. Open Git shell or Terminal
+5. Change the current working directory to the one where you want the cloned directory
+6. In your IDE Terminal, type the following command to clone my repository:
+  
+   `git clone https://github.com/sian504/jetsetters-journal.git`
+7. Press Enter to create your local clone.
+
+#### Forking
+
+By forking the GitHub Repository, we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original owner's repository.
+You can fork this repository by using the following steps:
+
+1. Login to GitHub and locate the [GitHub Repository](https://github.com/sian504/jetsetters-journal)
+2. At the top of the Repository just above the "Settings" Button on the menu, locate the "Fork" Button.
+3. Once clicked, you should now have a copy of the original repository in your own GitHub account!
